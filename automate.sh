@@ -11,3 +11,7 @@ if [ -d "$LOCAL_DIR" ]; then
 else
     git clone "$REPO_URL" "$LOCAL_DIR"
 fi
+
+#Build images and deploy application
+cd "$LOCAL_DIR"
+./deploy.sh
