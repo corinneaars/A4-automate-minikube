@@ -1,0 +1,44 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: build-deployment
+  namespace: minikube-automation
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: build
+  template:
+    metadata:
+      labels:
+        app: build
+    spec:
+      containers:
+      - name: build
+        image: corinneaarsbaylor/minikube-automation:build-image
+        ports:
+        - containerPort: 8080
+        resources:
+          requests:
+            cpu: "100m"
+            memory: "100Mi"
+          limits:
+            cpu: "500m"
+            memory: "500Mi"
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: build-service
+  namespace: minikube-soft-intro
+spec:
+  type: LoadBalancer
+  selector:
+    app: build
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+---

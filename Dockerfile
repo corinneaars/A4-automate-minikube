@@ -8,11 +8,13 @@ RUN apt-get update && apt-get install -y git
 WORKDIR /app
 
 # Clone your GitHub repository into the container
-RUN git clone https://github.com/yourusername/yourrepository.git
+# RUN git clone https://github.com/corinneaars/A4-automate-minikube.git
 
 # Set execute permissions for your bash script
 RUN chmod +x /app/automate.sh
 RUN ./automate.sh
+
+EXPOSE 8080
 
 # Run your bash script when the container starts
 CMD ["/bin/bash", "automate.sh"]
