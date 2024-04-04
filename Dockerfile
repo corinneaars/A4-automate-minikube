@@ -1,11 +1,12 @@
 # Use an official base image with bash
-FROM ubuntu:20.04
+FROM ubuntu:22.04
 
 # Install git
 RUN apt-get update && apt-get install -y git
 
 # Set the working directory in the container
 WORKDIR /app
+ADD . /app
 
 # Clone your GitHub repository into the container
 # RUN git clone https://github.com/corinneaars/A4-automate-minikube.git
