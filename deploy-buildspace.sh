@@ -9,6 +9,11 @@ eval $(minikube -p minikube docker-env)
 minikube addons enable metrics-server
 echo "Minikube started, metrics-server enabled"
 
+# Create namespace minikube-automation
+kubectl delete namespace minikube-automation
+kubectl create namespace minikube-automation
+kubectl config set-context --current --namespace=minikube-automation
+
 # Creating buildspace image
 docker rmi build-image
 docker build -t build-image .
