@@ -33,4 +33,4 @@ echo "Deployment applied"
 
 # echo "Sleeping 45 seconds..."
 # sleep 45
-# minikube service nextjs-service -n minikube-automation
+# minikube service build-service -n minikube-automation
